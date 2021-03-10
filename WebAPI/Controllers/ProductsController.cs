@@ -26,7 +26,7 @@ namespace WebAPI.Controllers
             _productService = productService;
         }
 
-        [HttpGet("getall")]
+        [HttpGet("getall")] 
         public IActionResult GetAll()
         {
             //Swagger
