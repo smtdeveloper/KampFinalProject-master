@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -20,7 +21,7 @@ namespace Business.Concrete
         public IDataResult<List<Category>> GetAll()
         {
             //İş kodları
-            return new SuccessDataResult<List<Category>>(_categoryDal.GetAll());
+            return new SuccessDataResult<List<Category>>(_categoryDal.GetAll(),Messages.ProductsListed);
         }
 
         //Select * from Categories where CategoryId = 3
