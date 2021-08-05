@@ -31,15 +31,13 @@ namespace Business.Concrete
             _productDal = productDal;
             _categoryService = categoryService;
         }
-
-        //00.25 Dersteyiz
+         
         //Claim
         [SecuredOperation("product.add,admin")] 
         [ValidationAspect(typeof(ProductValidator))]
         [CacheRemoveAspect("IProductService.Get")]
         public IResult Add(Product product)
         {
-
             //Aynı isimde ürün eklenemez
             //Eğer mevcut kategori sayısı 15'i geçtiyse sisteme yeni ürün eklenemez. ve 
             IResult result = BusinessRules.Run(CheckIfProductNameExists(product.ProductName), 
@@ -51,7 +49,6 @@ namespace Business.Concrete
             }
 
             _productDal.Add(product);
-
             return new SuccessResult(Messages.ProductAdded);
 
         }
@@ -138,18 +135,17 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        //[TransactionScopeAspect]
+       // [TransactionScopeAspect]
         public IResult AddTransactionalTest(Product product)
         {
 
             Add(product);
             if (product.UnitPrice < 10)
             {
-                    throw new Exception("");
+                    throw new Exception("ürün fiyatı 10'dan fazla olmalı. ");
             }
             
             Add(product);
-
             return null;
         }
     }
