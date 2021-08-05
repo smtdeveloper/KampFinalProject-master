@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController] 
     public class ProductsController : ControllerBase
     {
         //Loosely coupled
