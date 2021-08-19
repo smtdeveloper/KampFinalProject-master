@@ -1,4 +1,5 @@
-﻿using DataAccess.Abstract;
+﻿
+using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
 using System;
@@ -12,6 +13,7 @@ namespace DataAccess.Concrete.InMemory
     public class InMemoryProductDal : IProductDal
     {
         List<Product> _products;
+       
         public InMemoryProductDal()
         {
             //Oracle,Sql Server, Postgres , MongoDb

@@ -33,8 +33,8 @@ namespace Business.Concrete
         }
          
         //Claim
-        [SecuredOperation("product.add,admin")] 
-        [ValidationAspect(typeof(ProductValidator))]
+      //  [SecuredOperation("product.add,admin")] 
+       // [ValidationAspect(typeof(ProductValidator))]
         [CacheRemoveAspect("IProductService.Get")]
         public IResult Add(Product product)
         {
@@ -91,16 +91,15 @@ namespace Business.Concrete
             return new SuccessDataResult<List<ProductDetailDto>>(_productDal.GetProductDetails());
         }
 
-        [ValidationAspect(typeof(ProductValidator))]
-        [CacheRemoveAspect("IProductService.Get")]
+       // [ValidationAspect(typeof(ProductValidator))]
+       // [CacheRemoveAspect("IProductService.Get")]
         public IResult Update(Product product)
         {
-            var result = _productDal.GetAll(p => p.CategoryId == product.CategoryId).Count;
-            if (result >= 10)
-            {
-                return new ErrorResult(Messages.ProductCountOfCategoryError);
-            }
-            throw new NotImplementedException();
+            
+
+            _productDal.Update(product);
+            return new SuccessResult(Messages.ProductUpdated);
+
         }
 
         private IResult CheckIfProductCountOfCategoryCorrect(int categoryId)
@@ -147,6 +146,12 @@ namespace Business.Concrete
             
             Add(product);
             return null;
+        }
+
+        public IResult Delete(Product product)
+        {
+            _productDal.Delete(product);
+            return new SuccessResult(Messages.ProductDeleted);
         }
     }
 }
