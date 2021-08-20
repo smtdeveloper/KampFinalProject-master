@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Entities.DTOs.Emyloyees
 {
-    public class EmployeesAddDto : IDto
+    public class EmployeesAddDto : IEntity
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
