@@ -26,6 +26,8 @@ namespace ConsoleUI
             }
         }
 
+      
+
         private static void ProductTest()
         {
             ProductManager productManager = new ProductManager(new EfProductDal()
