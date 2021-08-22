@@ -20,3 +20,4 @@ namespace Entities.DTOs.Emyloyees
             get; set;
         }
 }
+}

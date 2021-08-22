@@ -42,6 +42,7 @@ namespace WebAPI
             //AOP
             //Postsharp
             services.AddControllers();
+            services.AddSwaggerDocument();
             //services.AddSingleton<IProductService,ProductManager>();
             //services.AddSingleton<IProductDal, EfProductDal>();
 
@@ -85,6 +86,8 @@ namespace WebAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
 
             app.UseAuthentication();
 
